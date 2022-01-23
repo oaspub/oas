@@ -4,6 +4,6 @@ export interface ReferenceType {
   $ref: string
 }
 
-export const ReferenceModel = z.object({
+export const Reference = z.object({
   $ref: z.string()
 })

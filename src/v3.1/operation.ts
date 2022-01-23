@@ -1,12 +1,12 @@
 import { z } from 'zod'
-import { ExternalDocumentationModel, ExternalDocumentationType } from './externalDocumentation'
-import { ParameterModel, ParameterType } from './parameter'
-import { ReferenceModel, ReferenceType } from './reference'
-import { RequestBodyModel, RequestBodyType } from './requestBody'
-import { ResponsesModel, ResponsesType } from './responses'
-import { CallbackModel, CallbackType } from './callback'
-import { SecurityRequirementModel, SecurityRequirementType } from './securityRequirement'
-import { ServerModel, ServerType } from './server'
+import { ExternalDocumentation, ExternalDocumentationType } from './externalDocumentation'
+import { Parameter, ParameterType } from './parameter'
+import { Reference, ReferenceType } from './reference'
+import { RequestBody, RequestBodyType } from './requestBody'
+import { Responses, ResponsesType } from './responses'
+import { Callback, CallbackType } from './callback'
+import { SecurityRequirement, SecurityRequirementType } from './securityRequirement'
+import { Server, ServerType } from './server'
 
 export interface OperationType {
   tags?: string[]
@@ -23,17 +23,17 @@ export interface OperationType {
   servers?: ServerType[]
 }
 
-export const OperationModel: z.ZodSchema<OperationType> = z.lazy(() => z.object({
+export const Operation: z.ZodSchema<OperationType> = z.lazy(() => z.object({
   tags: z.string().array().optional(),
   summary: z.string().optional(),
   description: z.string().optional(),
-  externalDocs: ExternalDocumentationModel.optional(),
+  externalDocs: ExternalDocumentation.optional(),
   operationId: z.string().optional(),
-  parameters: z.union([ParameterModel, ReferenceModel]).array().optional(),
-  requestBody: z.union([RequestBodyModel, ReferenceModel]).optional(),
-  responses: ResponsesModel.optional(),
-  callbacks: CallbackModel.optional(),
+  parameters: z.union([Parameter, Reference]).array().optional(),
+  requestBody: z.union([RequestBody, Reference]).optional(),
+  responses: Responses.optional(),
+  callbacks: Callback.optional(),
   deprecated: z.boolean().default(false),
-  security: SecurityRequirementModel.array().optional(),
-  servers: ServerModel.array().optional()
+  security: SecurityRequirement.array().optional(),
+  servers: Server.array().optional()
 }))

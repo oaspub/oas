@@ -1,7 +1,7 @@
 import { z } from 'zod'
-import { SchemaModel, SchemaType } from './schema'
-import { ExampleModel, ExampleType } from './example'
-import { ReferenceModel, ReferenceType } from './reference'
+import { Schema, SchemaType } from './schema'
+import { Example, ExampleType } from './example'
+import { Reference, ReferenceType } from './reference'
 
 export interface ParameterType {
   name: string
@@ -18,7 +18,7 @@ export interface ParameterType {
   examples?: Record<string, ExampleType | ReferenceType>
 }
 
-export const ParameterModel: z.ZodSchema<ParameterType> = z.lazy(() => z.object({
+export const Parameter: z.ZodSchema<ParameterType> = z.lazy(() => z.object({
   name: z.string(),
   in: z.enum(['query', 'header', 'path', 'cookie']),
   description: z.string().optional(),
@@ -28,7 +28,7 @@ export const ParameterModel: z.ZodSchema<ParameterType> = z.lazy(() => z.object(
   style: z.enum(['form', 'simple']).default('simple'),
   explode: z.boolean().default(false),
   allowReserved: z.boolean().default(false),
-  schema: SchemaModel.optional(),
+  schema: Schema.optional(),
   example: z.any().optional(),
-  examples: z.record(z.union([ExampleModel, ReferenceModel])).optional()
+  examples: z.record(z.union([Example, Reference])).optional()
 }))

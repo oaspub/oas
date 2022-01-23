@@ -1,7 +1,7 @@
 import { z } from 'zod'
-import { PathItemModel, PathItemType } from './pathItem'
-import { ReferenceModel, ReferenceType } from './reference'
+import { PathItem, PathItemType } from './pathItem'
+import { Reference, ReferenceType } from './reference'
 
 export type CallbackType = Record<string, PathItemType | ReferenceType>
 
-export const CallbackModel: z.ZodSchema<CallbackType> = z.lazy(() => z.record(z.union([PathItemModel, ReferenceModel])))
+export const Callback: z.ZodSchema<CallbackType> = z.lazy(() => z.record(z.union([PathItem, Reference])))

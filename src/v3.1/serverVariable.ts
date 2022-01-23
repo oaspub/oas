@@ -6,7 +6,7 @@ export interface ServerVariableType {
   description?: string
 }
 
-export const ServerVariableModel: z.ZodSchema<ServerVariableType> = z.object({
+export const ServerVariable: z.ZodSchema<ServerVariableType> = z.object({
   enum: z.string().array().optional(),
   default: z.string(),
   description: z.string().optional()

@@ -1,8 +1,8 @@
 import { z } from 'zod'
-import { ReferenceModel, ReferenceType } from './reference'
-import { ServerModel, ServerType } from './server'
-import { ParameterModel, ParameterType } from './parameter'
-import { OperationModel, OperationType } from './operation'
+import { Reference, ReferenceType } from './reference'
+import { Server, ServerType } from './server'
+import { Parameter, ParameterType } from './parameter'
+import { Operation, OperationType } from './operation'
 
 export interface PathItemType {
   $ref?: ReferenceType
@@ -20,18 +20,18 @@ export interface PathItemType {
   parameters?: Array<ParameterType | ReferenceType>
 }
 
-export const PathItemModel: z.ZodSchema<PathItemType> = z.lazy(() => z.object({
-  $ref: ReferenceModel.optional(),
+export const PathItem: z.ZodSchema<PathItemType> = z.lazy(() => z.object({
+  $ref: Reference.optional(),
   summary: z.string().optional(),
   description: z.string().optional(),
-  get: OperationModel.optional(),
-  put: OperationModel.optional(),
-  post: OperationModel.optional(),
-  delete: OperationModel.optional(),
-  options: OperationModel.optional(),
-  head: OperationModel.optional(),
-  patch: OperationModel.optional(),
-  trace: OperationModel.optional(),
-  servers: ServerModel.array().optional(),
-  parameters: z.union([ParameterModel, ReferenceModel]).array().optional()
+  get: Operation.optional(),
+  put: Operation.optional(),
+  post: Operation.optional(),
+  delete: Operation.optional(),
+  options: Operation.optional(),
+  head: Operation.optional(),
+  patch: Operation.optional(),
+  trace: Operation.optional(),
+  servers: Server.array().optional(),
+  parameters: z.union([Parameter, Reference]).array().optional()
 }))

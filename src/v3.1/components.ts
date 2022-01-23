@@ -1,15 +1,15 @@
 import { z } from 'zod'
-import { SchemaModel, SchemaType } from './schema'
-import { ReferenceModel, ReferenceType } from './reference'
-import { ResponseModel, ResponseType } from './response'
-import { ParameterModel, ParameterType } from './parameter'
-import { ExampleModel, ExampleType } from './example'
-import { RequestBodyModel, RequestBodyType } from './requestBody'
-import { HeaderModel, HeaderType } from './header'
-import { SecuritySchemeModel, SecuritySchemeType } from './securityScheme'
-import { LinkModel, LinkType } from './link'
-import { CallbackModel, CallbackType } from './callback'
-import { PathItemModel, PathItemType } from './pathItem'
+import { Schema, SchemaType } from './schema'
+import { Reference, ReferenceType } from './reference'
+import { Response, ResponseType } from './response'
+import { Parameter, ParameterType } from './parameter'
+import { Example, ExampleType } from './example'
+import { RequestBody, RequestBodyType } from './requestBody'
+import { Header, HeaderType } from './header'
+import { SecurityScheme, SecuritySchemeType } from './securityScheme'
+import { Link, LinkType } from './link'
+import { Callback, CallbackType } from './callback'
+import { PathItem, PathItemType } from './pathItem'
 
 type ComponentTypeMember<T> = Record<string, T | ReferenceType>
 
@@ -26,17 +26,17 @@ export interface ComponentsType {
   pathItems?: ComponentTypeMember<PathItemType>
 }
 
-export const ComponentsModel: z.ZodSchema<ComponentsType> = z.object({
-  schemas: z.record(SchemaModel).optional(),
-  responses: z.record(z.union([ResponseModel, ReferenceModel])).optional(),
-  parameters: z.record(z.union([ParameterModel, ReferenceModel])).optional(),
-  examples: z.record(z.union([ExampleModel, ReferenceModel])).optional(),
-  requestBodies: z.record(z.union([RequestBodyModel, ReferenceModel])).optional(),
-  headers: z.record(z.union([HeaderModel, ReferenceModel])).optional(),
-  securitySchemes: z.record(z.union([SecuritySchemeModel, ReferenceModel])).optional(),
-  links: z.record(z.union([LinkModel, ReferenceModel])).optional(),
-  callbacks: z.record(z.union([CallbackModel, ReferenceModel])).optional(),
-  pathItems: z.record(z.union([PathItemModel, ReferenceModel])).optional()
+export const Components: z.ZodSchema<ComponentsType> = z.object({
+  schemas: z.record(Schema).optional(),
+  responses: z.record(z.union([Response, Reference])).optional(),
+  parameters: z.record(z.union([Parameter, Reference])).optional(),
+  examples: z.record(z.union([Example, Reference])).optional(),
+  requestBodies: z.record(z.union([RequestBody, Reference])).optional(),
+  headers: z.record(z.union([Header, Reference])).optional(),
+  securitySchemes: z.record(z.union([SecurityScheme, Reference])).optional(),
+  links: z.record(z.union([Link, Reference])).optional(),
+  callbacks: z.record(z.union([Callback, Reference])).optional(),
+  pathItems: z.record(z.union([PathItem, Reference])).optional()
 })
 
 /*

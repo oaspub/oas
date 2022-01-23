@@ -1,12 +1,12 @@
 import { z } from 'zod'
-import { InfoModel, InfoType } from './info'
-import { ServerModel, ServerType } from './server'
-import { PathItemModel, PathItemType } from './pathItem'
-import { ReferenceModel, ReferenceType } from './reference'
-import { ComponentsModel, ComponentsType } from './components'
-import { SecurityRequirementModel, SecurityRequirementType } from './securityRequirement'
-import { TagModel, TagType } from './tag'
-import { ExternalDocumentationModel, ExternalDocumentationType } from './externalDocumentation'
+import { Info, InfoType } from './info'
+import { Server, ServerType } from './server'
+import { PathItem, PathItemType } from './pathItem'
+import { Reference, ReferenceType } from './reference'
+import { Components, ComponentsType } from './components'
+import { SecurityRequirement, SecurityRequirementType } from './securityRequirement'
+import { Tag, TagType } from './tag'
+import { ExternalDocumentation, ExternalDocumentationType } from './externalDocumentation'
 
 export interface DocumentType {
   openapi: '3.1.0'
@@ -21,15 +21,15 @@ export interface DocumentType {
   externalDocs?: ExternalDocumentationType
 }
 
-export const DocumentModel: z.ZodSchema<DocumentType> = z.object({
+export const Document: z.ZodSchema<DocumentType> = z.object({
   openapi: z.literal('3.1.0'),
-  info: InfoModel,
+  info: Info,
   jsonSchemaDialect: z.string().url().optional(),
-  servers: ServerModel.array().optional(),
-  paths: z.record(PathItemModel).optional(),
-  webhooks: z.record(z.union([PathItemModel, ReferenceModel])).optional(),
-  components: ComponentsModel.optional(),
-  security: SecurityRequirementModel.array().optional(),
-  tags: TagModel.array().optional(),
-  externalDocs: ExternalDocumentationModel.optional()
+  servers: Server.array().optional(),
+  paths: z.record(PathItem).optional(),
+  webhooks: z.record(z.union([PathItem, Reference])).optional(),
+  components: Components.optional(),
+  security: SecurityRequirement.array().optional(),
+  tags: Tag.array().optional(),
+  externalDocs: ExternalDocumentation.optional()
 })

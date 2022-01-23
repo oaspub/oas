@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { OauthFlowModel, OauthFlowType } from './oauthFlow'
+import { OauthFlow, OauthFlowType } from './oauthFlow'
 
 export interface OauthFlowsType {
   implicit?: OauthFlowType
@@ -8,9 +8,9 @@ export interface OauthFlowsType {
   authorizationCode?: OauthFlowType
 }
 
-export const OauthFlowsModel: z.ZodSchema<OauthFlowsType> = z.object({
-  implicit: OauthFlowModel.optional(),
-  password: OauthFlowModel.optional(),
-  clientCredentials: OauthFlowModel.optional(),
-  authorizationCode: OauthFlowModel.optional()
+export const OauthFlows: z.ZodSchema<OauthFlowsType> = z.object({
+  implicit: OauthFlow.optional(),
+  password: OauthFlow.optional(),
+  clientCredentials: OauthFlow.optional(),
+  authorizationCode: OauthFlow.optional()
 })

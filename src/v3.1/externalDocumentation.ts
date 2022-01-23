@@ -5,7 +5,7 @@ export interface ExternalDocumentationType {
   url: string
 }
 
-export const ExternalDocumentationModel: z.ZodSchema<ExternalDocumentationType> = z.object({
+export const ExternalDocumentation: z.ZodSchema<ExternalDocumentationType> = z.object({
   description: z.string().optional(),
   url: z.string().url()
 })

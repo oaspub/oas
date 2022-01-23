@@ -1,8 +1,8 @@
 import { z } from 'zod'
-import { SchemaModel, SchemaType } from './schema'
-import { ExampleModel, ExampleType } from './example'
-import { ReferenceModel, ReferenceType } from './reference'
-import { EncodingModel, EncodingType } from './encoding'
+import { Schema, SchemaType } from './schema'
+import { Example, ExampleType } from './example'
+import { Reference, ReferenceType } from './reference'
+import { Encoding, EncodingType } from './encoding'
 
 export interface MediaTypeType {
   schema?: SchemaType
@@ -11,9 +11,9 @@ export interface MediaTypeType {
   encoding?: Record<string, EncodingType>
 }
 
-export const MediaTypeModel: z.ZodSchema<MediaTypeType> = z.lazy(() => z.object({
-  schema: SchemaModel.optional(),
+export const MediaType: z.ZodSchema<MediaTypeType> = z.lazy(() => z.object({
+  schema: Schema.optional(),
   example: z.any().optional(),
-  examples: z.record(z.union([ExampleModel, ReferenceModel])).optional(),
-  encoding: z.record(EncodingModel).optional()
+  examples: z.record(z.union([Example, Reference])).optional(),
+  encoding: z.record(Encoding).optional()
 }))

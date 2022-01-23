@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { ExternalDocumentationModel, ExternalDocumentationType } from './externalDocumentation'
+import { ExternalDocumentation, ExternalDocumentationType } from './externalDocumentation'
 
 export interface TagType {
   name: string
@@ -7,8 +7,8 @@ export interface TagType {
   externalDoc?: ExternalDocumentationType
 }
 
-export const TagModel = z.object({
+export const Tag = z.object({
   name: z.string(),
   description: z.string().optional(),
-  externalDoc: ExternalDocumentationModel.optional()
+  externalDoc: ExternalDocumentation.optional()
 })

@@ -8,7 +8,7 @@ export type LicenseType = {
   url?: string
 })
 
-export const LicenseModel: z.ZodSchema<LicenseType> = z.intersection(z.object({ name: z.string() }),
+export const License: z.ZodSchema<LicenseType> = z.intersection(z.object({ name: z.string() }),
   z.union([
     z.object({
       identifier: z.string().optional()

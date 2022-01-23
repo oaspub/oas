@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { ServerModel, ServerType } from './server'
+import { Server, ServerType } from './server'
 
 export interface LinkType {
   operationRef?: string
@@ -10,11 +10,11 @@ export interface LinkType {
   server?: ServerType
 }
 
-export const LinkModel: z.ZodSchema<LinkType> = z.object({
+export const Link: z.ZodSchema<LinkType> = z.object({
   operationRef: z.string().optional(),
   operationId: z.string().optional(),
   parameters: z.record(z.any()).optional(),
   requestBody: z.any().optional(),
   description: z.string().optional(),
-  server: ServerModel.optional()
+  server: Server.optional()
 })

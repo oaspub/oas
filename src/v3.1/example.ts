@@ -9,7 +9,7 @@ export type ExampleType = {
   externalValue?: string
 })
 
-export const ExampleModel: z.ZodSchema<ExampleType> = z.intersection(
+export const Example: z.ZodSchema<ExampleType> = z.intersection(
   z.object({
     summary: z.string().optional(),
     description: z.string().optional()

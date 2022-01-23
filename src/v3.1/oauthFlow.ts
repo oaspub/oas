@@ -7,7 +7,7 @@ export interface OauthFlowType {
   scopes: Record<string, string[]>
 }
 
-export const OauthFlowModel: z.ZodSchema<OauthFlowType> = z.object({
+export const OauthFlow: z.ZodSchema<OauthFlowType> = z.object({
   authorizationUrl: z.string().url(),
   tokenUrl: z.string().url(),
   refreshUrl: z.string().url().optional(),
