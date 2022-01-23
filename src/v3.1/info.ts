@@ -10,7 +10,7 @@ export interface InfoType {
   description: string
   termsOfService: string
   contact: ContactType
-  license: LicenseType,
+  license: LicenseType
   version: string
 }
 
