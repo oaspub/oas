@@ -1,0 +1,52 @@
+{
+  "name": "@oaspub/types",
+  "version": "0.0.0",
+  "description": "OpenAPI Specification types and schema validation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": "16"
+  },
+  "scripts": {
+    "build": "rimraf dist types && tsc",
+    "lint": "eslint . --ignore-path .gitignore",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oaspub/types.git"
+  },
+  "keywords": [
+    "oas",
+    "openapi",
+    "semver",
+    "semantic",
+    "version",
+    "document"
+  ],
+  "author": "Spencer Tuft <stuft2@oaspub.io>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/oaspub/types/issues"
+  },
+  "homepage": "https://github.com/oaspub/types#readme",
+  "dependencies": {
+    "zod": "^3.11.6"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.2",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^16.11.21",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard-with-typescript": "^21.0.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "jest": "^27.4.7",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.5.5"
+  }
+}
